@@ -21,7 +21,7 @@ def suite():
     #suite.addTest (suiteTest("testsub"))
 
     #or using the line below...
-    suite.addTest(unittest.makeSuite(suiteTest))
+    suite.addTest(unittest.makeSuite(suiteTest))  #To add all cases one time.
     return suite
 
 
