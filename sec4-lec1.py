@@ -23,7 +23,7 @@ class SimpleTest2(unittest.TestCase):
             print(name, self.a, self.b)
 
     def tearDown(self):
-        print('\nend of test', self.shortDescription())
+        print('end of test', self.shortDescription(),'\n')
 
     def testadd(self):
         """Add"""

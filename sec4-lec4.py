@@ -24,11 +24,12 @@ class Test2(unittest.TestCase):
         self.assertEqual(sub(4,5),3)
 
 
-testList = [Test1, Test2]
+# List of clases
+testCases = [Test1, Test2]
 testLoad = unittest.TestLoader()
 
 TestList = []
-for testCase in testList:
+for testCase in testCases:
     testSuite = testLoad.loadTestsFromTestCase(testCase)
     TestList.append(testSuite)
 
