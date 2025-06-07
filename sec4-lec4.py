@@ -1,38 +1,46 @@
 import unittest
 
-def add(x,y):
-    return x + y
+class suiteTest(unittest.TestCase):
+    def setUp(self):
+        self.a = 10
+        self.b = 20
 
-def sub(x,y):
-    return x - y
+    def testadd(self):
+        """Add"""
+        result = self.a+self.b
+        self.assertTrue(result == 100)
+    def testsub(self):
+        """sub"""
+        result = self.a-self.b
+        self.assertTrue(result == -10)
 
-class Test1(unittest.TestCase):
-    def testadd1(self):
-        self.assertEqual(add(4,5),9)
-    def testadd2(self):
-        self.assertEqual(add(4,5),10)
-    def testadd3(self):
-        self.assertEqual(add(4,5),0)
+def suite():
+    suite = unittest.TestSuite()
 
-
-class Test2(unittest.TestCase):
-    def testsub1(self):
-        self.assertEqual(sub(4,5),9)
-    def testsub2(self):
-        self.assertEqual(sub(4,5),-1)
-    def testsub3(self):
-        self.assertEqual(sub(4,5),3)
+    suite.addTest(unittest.makeSuite(suiteTest))  #To add all cases one time.
+    return suite
 
 
-# List of clases
-testCases = [Test1, Test2]
-testLoad = unittest.TestLoader()
+if __name__ == '__main__':
+   runner = unittest.TextTestRunner()
+   test_suite = suite()
+   result = runner.run (test_suite)
 
-TestList = []
-for testCase in testCases:
-    testSuite = testLoad.loadTestsFromTestCase(testCase)
-    TestList.append(testSuite)
+   print ("---- START OF TEST RESULTS")
+   print (result)
 
-newSuite = unittest.TestSuite(TestList)
-runner = unittest.TextTestRunner()
-runner.run(newSuite)
+   print ("result::errors")
+   print (result.errors)
+
+   print ("result::failures")
+   print (result.failures)
+
+   print ("result::skipped")
+   print (result.skipped)
+
+   print ("result::successful")
+   print (result.wasSuccessful())
+
+   print ("result::test-run")
+   print (result.testsRun)
+   print ("---- END OF TEST RESULTS")

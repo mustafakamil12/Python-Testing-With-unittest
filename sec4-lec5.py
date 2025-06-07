@@ -1,24 +1,38 @@
-# tests/runner.py
 import unittest
 
-# import your test modules
-import player
-import scenario
-import thing
+def add(x,y):
+    return x + y
 
-# initialize the test suite
-loader = unittest.TestLoader()
-suite  = unittest.TestSuite()
+def sub(x,y):
+    return x - y
 
-# add tests to the test suite
-# suite.addTests(loader.loadTestsFromModule(player))
-# suite.addTests(loader.loadTestsFromModule(scenario))
-# suite.addTests(loader.loadTestsFromModule(thing))
-# OR
-models_to_test = [player,scenario,thing]
-for model_to_test in models_to_test:
-    suite.addTests(loader.loadTestsFromModule(model_to_test))
+class Test1(unittest.TestCase):
+    def testadd1(self):
+        self.assertEqual(add(4,5),9)
+    def testadd2(self):
+        self.assertEqual(add(4,5),10)
+    def testadd3(self):
+        self.assertEqual(add(4,5),0)
 
-# initialize a runner, pass it your suite and run it
-runner = unittest.TextTestRunner(verbosity=3)
-result = runner.run(suite)
+
+class Test2(unittest.TestCase):
+    def testsub1(self):
+        self.assertEqual(sub(4,5),9)
+    def testsub2(self):
+        self.assertEqual(sub(4,5),-1)
+    def testsub3(self):
+        self.assertEqual(sub(4,5),3)
+
+
+# List of clases
+testCases = [Test1, Test2]
+testLoad = unittest.TestLoader()
+
+TestList = []
+for testCase in testCases:
+    testSuite = testLoad.loadTestsFromTestCase(testCase)
+    TestList.append(testSuite)
+
+newSuite = unittest.TestSuite(TestList)
+runner = unittest.TextTestRunner()
+runner.run(newSuite)

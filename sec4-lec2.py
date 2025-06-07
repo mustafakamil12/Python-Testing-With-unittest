@@ -17,6 +17,7 @@ class TestFixtures(unittest.TestCase):
         self.b = 20
         name = self.shortDescription()
         print ("\ncalling setUp() method for --> ",name)
+    
     def tearDown(self):
         print ('\nend of test',"using tearDown() --> ",self.shortDescription())
 
@@ -25,6 +26,7 @@ class TestFixtures(unittest.TestCase):
         print("start test1")
         result = self.a+self.b
         self.assertTrue(True)   # result == 10
+    
     def test2(self):
         """Two"""
         print("start test2")

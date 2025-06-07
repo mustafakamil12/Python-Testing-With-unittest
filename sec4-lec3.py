@@ -16,17 +16,15 @@ class suiteTest(unittest.TestCase):
 
 def suite():
     suite = unittest.TestSuite()
-    #either use the 2 lines below...
-    #suite.addTest (suiteTest("testadd"))
-    #suite.addTest (suiteTest("testsub"))
 
-    #or using the line below...
-    suite.addTest(unittest.makeSuite(suiteTest))  #To add all cases one time.
+    suite.addTest (suiteTest("testadd"))
+    suite.addTest (suiteTest("testsub"))
+
     return suite
 
 
 if __name__ == '__main__':
-   runner = unittest.TextTestRunner()
+   runner = unittest.TextTestRunner(verbosity=2)   # Set verbosity to 2 for more detailed output
    test_suite = suite()
    result = runner.run (test_suite)
 

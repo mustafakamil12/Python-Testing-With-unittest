@@ -15,24 +15,26 @@ class SimpleTest2(unittest.TestCase):
         if name == "Add":
             self.a = 10
             self.b = 20
-            print(name, self.a, self.b)
+            print('setUP:',name, self.a, self.b)
 
         if name == "Sub":
             self.a = 50
             self.b = 60
-            print(name, self.a, self.b)
+            print('setUp',name, self.a, self.b)
 
     def tearDown(self):
-        print('end of test', self.shortDescription(),'\n')
+        print('\nend of test', self.shortDescription(),'\n')
 
     def testadd(self):
         """Add"""
+        print("testadd")
         result = self.a + self.b
         self.assertTrue(result == 100)
 
 
     def testsub(self):
         """Sub"""
+        print("testsub")
         result = self.a - self.b
         self.assertTrue(result == -10)
      
